@@ -14,7 +14,77 @@
   <meta property="og:url" content="https://www.linkedin.com/in/alexandru-cerlat-274188215/"/>
   <meta property="og:image" content="https://github.com/AlexCerlat/cover.png"/>
   <link rel="icon" href="favicon.ico" />
-  <style>/* (CSS unchanged for brevity) */</style>
+  <style>
+    :root{
+      --bg: #0b1020;
+      --muted-bg: #11162a;
+      --card: #0f1529;
+      --text: #eef1ff;
+      --text-muted: #c6c9da;
+      --brand: #6ea8fe;
+      --brand-2:#8ef6d2;
+      --border: #232a43;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    [data-theme="light"]{
+      --bg: #f7f9ff;
+      --muted-bg: #eef2ff;
+      --card: #ffffff;
+      --text: #0d1321;
+      --text-muted: #3c4157;
+      --brand: #3454f5;
+      --brand-2:#0fb;
+      --border: #e8ecff;
+      --shadow: 0 10px 24px rgba(34,52,134,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;height:100%}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1000px;margin:0 auto;padding:24px}
+    header{
+      position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0));backdrop-filter:saturate(130%) blur(6px)
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--border)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
+    .brand h1{font-size:18px;margin:0}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 14px;border-radius:12px;box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px)}
+    .hero{padding:48px 24px 16px;border-bottom:1px solid var(--border)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:var(--muted-bg);color:var(--text-muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px}
+    h2{margin:8px 0 12px;font-size:28px}
+    p{margin:0 0 14px}
+    .kpi{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+    .kpi .card{flex:1;min-width:180px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){.hero-grid,.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+    section{scroll-margin-top:80px}
+    .h{display:flex;align-items:center;justify-content:space-between}
+    .muted{color:var(--text-muted)}
+    .list{display:grid;gap:10px}
+    .list li{list-style:none;padding:12px;border:1px dashed var(--border);border-radius:12px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.02))}
+    footer{border-top:1px solid var(--border);margin-top:24px;padding:24px;color:var(--text-muted);font-size:14px}
+    .tag{display:inline-flex;padding:4px 8px;border:1px solid var(--border);border-radius:999px;font-size:12px;background:var(--muted-bg);color:var(--text-muted)}
+    .stack{display:flex;gap:8px;flex-wrap:wrap}
+    .post{display:block}
+    .post h3{margin:4px 0 6px}
+    .post small{color:var(--text-muted)}
+    .toc{display:flex;gap:8px;flex-wrap:wrap}
+    .toc a{border:1px solid var(--border);background:var(--muted-bg);padding:8px 10px;border-radius:999px}
+    .sep{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:16px 0}
+  </style>
   <script>
     function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t)}
     function toggleTheme(){const cur=document.documentElement.getAttribute('data-theme');setTheme(cur==='dark'?'light':'dark')}
@@ -55,13 +125,13 @@
     <section class="hero" id="about">
       <div class="hero-grid">
         <div>
-          <span class="pill">Time-to-Impact: <strong>Fast</strong> · Focus: <strong>DevOps/DevSecOps</strong></span>
+          <span class="pill">Time-to-Impact: <strong>fast</strong> · Focus: <strong>DevOps/DevSecOps</strong></span>
           <h2>QA Integration Engineer & Networks Integration Engineer</h2>
-          <p>I'm Alexandru Cerlat. I integrate and validate enterprise and satcom network infrastructures. I build reliable pipelines, automation flows focused on resiliency and security, with end‑to‑end visibility. My medium-term goal: <strong>DevOps/DevSecOps Engineer</strong> with a recognized footprint locally and internationally.</p>
+          <p>I'm Alexandru Cerlat. I integrate and validate large-scale enterprise and satcom network infrastructures. I design robust pipelines, automations focused on reliability and security, with end-to-end visibility. Medium-term target: <strong>DevOps/DevSecOps engineer</strong> with an internationally recognized footprint.</p>
           <div class="kpi">
-            <div class="card"><strong>5+ years</strong><br/><span class="muted">NOC (ISP) — Core & Aggregation (Juniper EX/MX960)</span></div>
-            <div class="card"><strong>Multi‑vendor</strong><br/><span class="muted">Juniper · Fortinet · Oracle Cloud · Mikrotik</span></div>
-            <div class="card"><strong>QA/Integration</strong><br/><span class="muted">Testing, Validation, Observability</span></div>
+            <div class="card"><strong>5+ years</strong><br/><span class="muted">NOC (ISP) — core & aggregation (Juniper EX/MX960)</span></div>
+            <div class="card"><strong>Multi-vendor</strong><br/><span class="muted">Juniper · Fortinet · Oracle Cloud · Mikrotik</span></div>
+            <div class="card"><strong>QA/Integration</strong><br/><span class="muted">Testing, validation, observability</span></div>
           </div>
           <div class="sep"></div>
           <div class="stack">
@@ -76,12 +146,12 @@
           </div>
         </div>
         <div class="card">
-          <h3>Key Info</h3>
+          <h3>Key Highlights</h3>
           <ul class="list">
             <li><strong>Current Role:</strong> Networks Integration Engineer @ DAAC System Integrator</li>
             <li><strong>Current Role:</strong> QA Integration Engineer @ Gilat Satellite Technologies</li>
             <li><strong>Objective:</strong> DevOps/DevSecOps, continuous delivery, security by design</li>
-            <li><strong>Available for:</strong> collaborations, open‑source projects, knowledge sharing</li>
+            <li><strong>Available:</strong> collaborations, open-source projects, knowledge sharing</li>
           </ul>
           <div class="sep"></div>
           <a class="btn" href="#contact">📩 Let's collaborate</a>
@@ -108,14 +178,14 @@
         </article>
         <article class="card">
           <h3>QA Integration Engineer · Gilat Satellite Technologies</h3>
-          <p class="muted">Test plans, functional validation, traffic analysis, and quality reporting for satellite integration solutions.</p>
+          <p class="muted">Test plans, functional validation, traffic analysis, quality reporting for satellite solutions integration.</p>
           <div class="stack">
             <span class="tag">QoS</span><span class="tag">Monitoring</span><span class="tag">Python</span><span class="tag">Test Design</span>
           </div>
         </article>
         <article class="card">
           <h3>NOC Engineer · ISP</h3>
-          <p class="muted">2 years on Juniper core & aggregation (EX, MX960): operations, controlled changes, RCA, capacity management.</p>
+          <p class="muted">2 years working on Juniper core & aggregation (EX, MX960): operations, controlled changes, RCA, capacity management.</p>
           <div class="stack">
             <span class="tag">Juniper EX</span><span class="tag">MX960</span><span class="tag">SNMP/NetFlow</span><span class="tag">Incident Mgmt</span>
           </div>
@@ -140,7 +210,7 @@
     </section>
 
     <section id="posts" style="padding:24px 0">
-      <div class="h"><h2>Blog</h2><span class="muted">Notes, how‑tos, post‑mortems</span></div>
+      <div class="h"><h2>Blog</h2><span class="muted">Notes, how-tos, post-mortems</span></div>
       <div class="grid cols-3">
         <a class="post card" href="#" aria-disabled="true">
           <small class="muted">Draft</small>
@@ -164,8 +234,8 @@
       <h2>Contact</h2>
       <div class="grid cols-2">
         <div class="card">
-          <p>Open to discussions on <strong>Networking · DevOps · DevSecOps</strong> projects.</p>
-          <p class="muted">Replace links with your own:</p>
+          <p>Open for discussions on <strong>Networking · DevOps · DevSecOps</strong> projects.</p>
+          <p class="muted">Replace the links below with your own:</p>
           <div class="stack">
             <a class="btn" href="mailto:sandu.cerlat.sandu@gmail.com">Email</a>
             <a class="btn" href="https://github.com/AlexCerlat" target="_blank" rel="noopener">GitHub</a>
@@ -193,4 +263,4 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
-</html>
+</html
