@@ -1,305 +1,269 @@
 <!doctype html>
-<html lang="en">
-  <head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge"><link rel="icon" type="image/png" href="/assets/images/profile_16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/assets/images/profile_32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="/assets/images/profile_64x64.png" sizes="64x64"><link rel="icon" type="image/png" href="/assets/images/profile_96x96.png" sizes="96x96"><link rel="stylesheet" href="/assets/css/style.css"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Ian Lewis | Engineer in Tokyo</title>
-<meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="Ian Lewis" />
-<meta property="og:locale" content="en_US" />
-<meta name="description" content="Ian Lewis is an engineer based in Tokyo, Japan. His current interests are in Container Native Security, Supply Chain Security, Containers, and Kubernetes." />
-<meta property="og:description" content="Ian Lewis is an engineer based in Tokyo, Japan. His current interests are in Container Native Security, Supply Chain Security, Containers, and Kubernetes." />
-<link rel="canonical" href="https://www.ianlewis.org/" />
-<meta property="og:url" content="https://www.ianlewis.org/" />
-<meta property="og:site_name" content="Ian Lewis" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Ian Lewis" />
-<meta name="twitter:site" content="@IanMLewis" />
-<script type="application/ld+json" nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk">
-{"@context":"https://schema.org","@type":"WebSite","description":"Ian Lewis is an engineer based in Tokyo, Japan. His current interests are in Container Native Security, Supply Chain Security, Containers, and Kubernetes.","headline":"Ian Lewis","name":"Ian Lewis","sameAs":["https://github.com/ianlewis","https://www.linkedin.com/in/ianmlewis","https://bsky.app/profile/ianlewis.org","https://hachyderm.io/@ianlewis","https://keybase.io/ianlewis","https://x.com/IanMLewis"],"url":"https://www.ianlewis.org/"}</script>
-<!-- End Jekyll SEO tag -->
-<link
-    rel="alternate"
-    type="application/rss+xml"
-    title="Ian Lewis | English Blog"
-    href="/en/feed.xml"
-  ><link
-    rel="alternate"
-    type="application/rss+xml"
-    title="Ian Lewis | 日本語ブログ"
-    href="/jp/feed.xml"
-  ><link
-    rel="alternate"
-    type="application/rss+xml"
-    title="Ian Lewis | Today I Learned"
-    href="/til/feed.xml"
-  ><script src="/assets/js/darkmode.js" nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk"></script>
-</head><body>
-    <main class="container">
-      <section class="about">
-        <div class="about-header condensed">
-          <div class="about-title">
-            <a href="/">
-              <img class="light" src="/assets/images/profile.png" alt="Ian Lewis">
-                <img class="dark" src="/assets/images/profile.png" alt="Ian Lewis">
-            </a>
-            <h2 id="title">
-              <a href="/">Ian Lewis</a>
-            </h2>
+<html lang="ro" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alexandru — Blog/Portfolio</title>
+  <meta name="description" content="Blog static și portofoliu pentru Alexandru, Networks Integration Engineer & QA Integration Engineer, focus DevOps/DevSecOps."/>
+  <meta name="author" content="Alexandru"/>
+  <meta name="color-scheme" content="light dark" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Alexandru — Blog/Portfolio"/>
+  <meta property="og:description" content="Networks Integration Engineer & QA Integration Engineer. Viitor DevOps/DevSecOps."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://username.github.io/"/>
+  <meta property="og:image" content="https://username.github.io/cover.png"/>
+  <!-- Favicon (opțional) -->
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    :root{
+      --bg: #0b1020;
+      --muted-bg: #11162a;
+      --card: #0f1529;
+      --text: #eef1ff;
+      --text-muted: #c6c9da;
+      --brand: #6ea8fe;
+      --brand-2:#8ef6d2;
+      --border: #232a43;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    [data-theme="light"]{
+      --bg: #f7f9ff;
+      --muted-bg: #eef2ff;
+      --card: #ffffff;
+      --text: #0d1321;
+      --text-muted: #3c4157;
+      --brand: #3454f5;
+      --brand-2:#0fb;
+      --border: #e8ecff;
+      --shadow: 0 10px 24px rgba(34,52,134,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;height:100%}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1000px;margin:0 auto;padding:24px}
+    header{
+      position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0));backdrop-filter:saturate(130%) blur(6px)
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--border)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
+    .brand h1{font-size:18px;margin:0}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 14px;border-radius:12px;box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px)}
+    .hero{padding:48px 24px 16px;border-bottom:1px solid var(--border)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:var(--muted-bg);color:var(--text-muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px}
+    h2{margin:8px 0 12px;font-size:28px}
+    p{margin:0 0 14px}
+    .kpi{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+    .kpi .card{flex:1;min-width:180px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){.hero-grid,.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+    section{scroll-margin-top:80px}
+    .h{display:flex;align-items:center;justify-content:space-between}
+    .muted{color:var(--text-muted)}
+    .list{display:grid;gap:10px}
+    .list li{list-style:none;padding:12px;border:1px dashed var(--border);border-radius:12px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.02))}
+    footer{border-top:1px solid var(--border);margin-top:24px;padding:24px;color:var(--text-muted);font-size:14px}
+    .tag{display:inline-flex;padding:4px 8px;border:1px solid var(--border);border-radius:999px;font-size:12px;background:var(--muted-bg);color:var(--text-muted)}
+    .stack{display:flex;gap:8px;flex-wrap:wrap}
+    .post{display:block}
+    .post h3{margin:4px 0 6px}
+    .post small{color:var(--text-muted)}
+    .toc{display:flex;gap:8px;flex-wrap:wrap}
+    .toc a{border:1px solid var(--border);background:var(--muted-bg);padding:8px 10px;border-radius:999px}
+    .sep{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:16px 0}
+  </style>
+  <script>
+    // Preferință temă
+    function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t)}
+    function toggleTheme(){const cur=document.documentElement.getAttribute('data-theme');setTheme(cur==='dark'?'light':'dark')}
+    const saved=localStorage.getItem('theme');if(saved){setTheme(saved)}
+    // Smooth scroll pentru ancore
+    addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a){e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})}})
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alexandru",
+    "jobTitle": "Networks Integration Engineer & QA Integration Engineer",
+    "worksFor": [{"@type":"Organization","name":"DAAC System Integrator"},{"@type":"Organization","name":"Gilat Satellite Technologies"}],
+    "knowsAbout": ["Networking","Juniper MX960","Fortinet FortiGate","DevOps","DevSecOps"],
+    "url": "https://username.github.io/"
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>Alexandru</h1>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">Despre</a>
+        <a href="#experience">Experiență</a>
+        <a href="#certs">Certificări</a>
+        <a href="#posts">Blog</a>
+        <a href="#contact">Contact</a>
+        <button class="btn" onclick="toggleTheme()" aria-label="Comută tema">🌓 Tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="about">
+      <div class="hero-grid">
+        <div>
+          <span class="pill">Time-to-Impact: <strong>rapid</strong> · Focus: <strong>DevOps/DevSecOps</strong></span>
+          <h2>Networks Integration Engineer & QA Integration Engineer</h2>
+          <p>Sunt Alexandru. Integrez și validez infrastructuri de rețea la scară enterprise și satcom. Construiesc pipeline‑uri robuste, automatizări orientate pe fiabilitate și securitate, cu vizibilitate end‑to‑end. Target pe termen mediu: <strong>DevOps/DevSecOps engineer</strong> cu footprint recunoscut local & internațional.</p>
+          <div class="kpi">
+            <div class="card"><strong>2+ ani</strong><br/><span class="muted">NOC (ISP) — core & aggregation (Juniper EX/MX960)</span></div>
+            <div class="card"><strong>Multi‑vendor</strong><br/><span class="muted">Juniper · Fortinet · Oracle Cloud</span></div>
+            <div class="card"><strong>QA/Integration</strong><br/><span class="muted">Testare, validare, observabilitate</span></div>
           </div>
-            <p class="tagline">Engineer in Tokyo</p>
+          <div class="sep"></div>
+          <div class="stack">
+            <span class="tag">Networking</span>
+            <span class="tag">FortiGate 7.6</span>
+            <span class="tag">FortiAnalyzer 7.4</span>
+            <span class="tag">JunOS</span>
+            <span class="tag">Automation</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Security</span>
+            <span class="tag">Oracle Cloud Infrastructure</span>
+          </div>
         </div>
-        <ul class="social about-footer condensed"><li>
-          <a rel="me" href="https://github.com/ianlewis" target="_blank">
-            <i class="icon-github-circled"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="https://www.linkedin.com/in/ianmlewis" target="_blank">
-            <i class="icon-linkedin-squared"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="https://bsky.app/profile/ianlewis.org" target="_blank">
-            <i class="icon-bluesky"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="https://hachyderm.io/@ianlewis" target="_blank">
-            <i class="icon-mastodon"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="https://keybase.io/ianlewis" target="_blank">
-            <i class="icon-keybase"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="mailto:ian@ianlewis.org" target="_blank">
-            <i class="icon-mail"></i>
-          </a>
-        </li></ul><nav class="navigation about-footer condensed">
-        <ul>
-          
-          <li>
-            <a href="/en">English Blog</a>
-          </li>
-          
-          <li>
-            <a href="/jp">日本語ブログ</a>
-          </li>
-          
-          <li>
-            <a href="/">About Me</a>
-          </li>
-          
-          <li>
-            <a href="/projects">Projects</a>
-          </li>
-          
-          <li>
-            <a href="/til">Today I Learned</a>
-          </li>
-          
-        </ul>
-      </nav><div class="theme-toggle about-footer condensed">
-        <button type="button" data-theme="light" aria-label="Light mode" title="Light mode">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
-        <button type="button" data-theme="auto" aria-label="Auto mode" title="Auto mode">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-        </button>
-        <button type="button" data-theme="dark" aria-label="Dark mode" title="Dark mode">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-      </div><p class="about-footer condensed">&copy; 2025 Ian Lewis</p>
-      
-      </section>
-      <section class="content">
-        <div class="post-container"><div class="post">
-    <!-- markdownlint-disable MD041 -->
-<!-- header is in include file -->
+        <div class="card">
+          <h3>Coordonate cheie</h3>
+          <ul class="list" style="margin:0;padding:0">
+            <li><strong>Rol curent:</strong> Networks Integration Engineer @ DAAC System Integrator</li>
+            <li><strong>Rol curent:</strong> QA Integration Engineer @ Gilat Satellite Technologies</li>
+            <li><strong>Obiectiv:</strong> DevOps/DevSecOps, livrare continuă, securitate by‑design</li>
+            <li><strong>Disponibil:</strong> colaborări, proiecte open‑source, knowledge sharing</li>
+          </ul>
+          <div class="sep"></div>
+          <a class="btn" href="#contact">📩 Hai să colaborăm</a>
+        </div>
+      </div>
+    </section>
 
-<h1 id="hi-im-ian-">Hi, I’m Ian 👋</h1>
+    <section id="experience" style="padding:24px 0">
+      <div class="h">
+        <h2>Experiență</h2>
+        <div class="toc">
+          <a href="#experience">Toate</a>
+          <a href="#certs">Certificări</a>
+          <a href="#posts">Articole</a>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <article class="card">
+          <h3>Networks Integration Engineer · DAAC System Integrator</h3>
+          <p class="muted">Integrare rețele enterprise, automatizare configurări, hardening, troubleshooting L2/L3.</p>
+          <div class="stack">
+            <span class="tag">BGP/OSPF</span><span class="tag">VXLAN</span><span class="tag">Ansible</span><span class="tag">IaC</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>QA Integration Engineer · Gilat Satellite Technologies</h3>
+          <p class="muted">Planuri de test, validare funcțională, analiză trafic, raportare calitate pentru integrarea soluțiilor satelit.</p>
+          <div class="stack">
+            <span class="tag">QoS</span><span class="tag">Monitoring</span><span class="tag">Python</span><span class="tag">Test Design</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>NOC Engineer · ISP</h3>
+          <p class="muted">2 ani pe core & aggregation Juniper (EX, MX960): operare, schimbări controlate, RCA, capacitate.</p>
+          <div class="stack">
+            <span class="tag">Juniper EX</span><span class="tag">MX960</span><span class="tag">SNMP/NetFlow</span><span class="tag">Incident Mgmt</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-<p>I’m an engineer based in Tokyo, Japan 🗼</p>
+    <section id="certs" style="padding:24px 0">
+      <h2>Certificări</h2>
+      <ul class="list" style="margin:0;padding:0">
+        <li>CCNA</li>
+        <li>FCA Cybersecurity</li>
+        <li>FCF Cybersecurity</li>
+        <li>FCP Network Security</li>
+        <li>Fortinet FortiAnalyzer 7.4 Administrator</li>
+        <li>Fortinet FortiGate 7.6 Administrator</li>
+        <li>Juniper JNCA-Junos</li>
+        <li>LFC108, LFD102, LFD103, LFS101, LFS151, LFS162, LFS169</li>
+        <li>Oracle Cloud Infrastructure 2025 Fundamentals</li>
+        <li>Oracle Cloud Infrastructure 2025 Architect Associate</li>
+      </ul>
+    </section>
 
-<p>👨‍💻 I mostly code in <a href="https://go.dev/">Go</a>, <a href="https://www.python.org/">Python</a>,
-<a href="https://www.typescriptlang.org/">TypeScript</a>, and Bash but dabble in other
-languages as well. I am learning <a href="https://www.rust-lang.org/">Rust</a>.</p>
+    <section id="posts" style="padding:24px 0">
+      <div class="h"><h2>Blog</h2><span class="muted">Note, how‑to, post‑mortems</span></div>
+      <div class="grid cols-3">
+        <a class="post card" href="#" aria-disabled="true">
+          <small class="muted">Draft</small>
+          <h3>Playbook: FortiGate hardening 7.6</h3>
+          <p class="muted">Baseline config, segmente, policy hygiene, logging, backup strategy.</p>
+        </a>
+        <a class="post card" href="#" aria-disabled="true">
+          <small class="muted">Draft</small>
+          <h3>JunOS pe scurt: EX & MX960</h3>
+          <p class="muted">Snippet‑uri utile pentru operațional și automation.</p>
+        </a>
+        <a class="post card" href="#" aria-disabled="true">
+          <small class="muted">Draft</small>
+          <h3>OCI pentru rețeliști</h3>
+          <p class="muted">Pattern‑uri VCN, gateway‑uri, securitate și observabilitate.</p>
+        </a>
+      </div>
+    </section>
 
-<p>🔭 My current interests are in cloud-native infrastructure, defensive security,
-and developer experience. I most recently worked in Container Security and
-<a href="https://en.wikipedia.org/wiki/Software_supply_chain">Software Supply Chain
-Security</a>.</p>
+    <section id="contact" style="padding:24px 0">
+      <h2>Contact</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <p>Deschis pentru dialog pe proiecte în zona <strong>Networking · DevOps · DevSecOps</strong>.</p>
+          <p class="muted">Înlocuiește link‑urile cu ale tale:</p>
+          <div class="stack">
+            <a class="btn" href="mailto:you@example.com">Email</a>
+            <a class="btn" href="https://github.com/username" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/username" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="#" aria-disabled="true">Download CV</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Meta</h3>
+          <ul class="list" style="margin:0;padding:0">
+            <li><strong>Stack țintă:</strong> IaC (Terraform), CI/CD (GitHub Actions), K8s, Observability</li>
+            <li><strong>Valori:</strong> securitate by‑default, automations first, knowledge sharing</li>
+            <li><strong>Limbi:</strong> RO, RU, EN</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<p>🗾 I have been based in Tokyo since 2006 and I am fluent in Japanese, passing
-<a href="https://www.jlpt.jp/">Japanese-Language Proficiency Test</a> (JLPT) N1 in 2013.</p>
+  <footer class="wrap">
+    <div>© <span id="year"></span> Alexandru • Built with HTML/CSS/JS • Hosted pe GitHub Pages</div>
+  </footer>
 
-<h2 id="️-work">🛠️ Work</h2>
-
-<p>☁️ I was an engineer at <a href="https://cloud.google.com/">Google Cloud</a> working on
-developer experience for <a href="https://kubernetes.io/">Kubernetes</a>, container
-security, and software supply chain security. While there I founded <a href="https://k8sjp.connpass.com/">Kubernetes
-Meetup Tokyo</a>, one of the largest local Kubernetes
-communities in the world. I was a contributor to the <a href="https://slsa.dev/">SLSA</a>
-supply chain security framework and the <a href="https://gvisor.dev/">gVisor</a> container
-sandbox.</p>
-
-<p>Prior to Google I focused on developer communities developing
-<a href="https://connpass.com">Connpass</a>, the largest IT meetup event tool in Japan with
-hundreds of thousands of users. I also co-founded and served on the board of
-<a href="https://www.pycon.jp/">PyCon JP</a>, the largest Python event in Japan. During
-this time I was a <a href="https://developers.google.com/experts/">Google Developer
-Expert</a> specializing in the Python
-language version of <a href="https://cloud.google.com/appengine/">App Engine</a>.</p>
-
-<p>📖 I wrote <a href="https://www.amazon.co.jp/-/en/%E3%83%91%E3%83%BC%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88-Python-%E6%94%B9%E8%A8%822%E7%89%88-PERFECT-5/dp/429711223X/">Perfect Python</a> with other Japanese
-Python community members, and have written articles for <a href="https://info.nikkeibp.co.jp/media/LIN/">Nikkei Linux
-Magazine</a>.</p>
-
-<p>My resume can be downloaded at the following links:</p>
-
-<ul>
-  <li><a href="https://github.com/ianlewis/resume/releases/latest/download/Ian_M_Lewis_Resume.pdf">English</a></li>
-  <li><a href="https://github.com/ianlewis/resume/releases/latest/download/Ian_M_Lewis_Resume.ja.pdf">Japanese</a></li>
-</ul>
-
-<h2 id="-contact">💬 Contact</h2>
-
-<p>If you want to have a chat with me you can book an appointment on my
-<a href="https://calendar.app.google/98BzZNZ424TMFrwh9">appointment page</a>. I can help
-you with:</p>
-
-<ul>
-  <li>DevOps / Infrastructure / Cloud Native / Security</li>
-  <li>Programming</li>
-  <li>Career advice</li>
-</ul>
-
-<p>You can contact me via my email at <a href="mailto:ian@ianlewis.org"><code class="language-plaintext highlighter-rouge">ian@ianlewis.org</code></a>.</p>
-
-<!-- markdownlint-enable MD041 -->
-
-<hr />
-
-<p>My public key can be downloaded at
-<a href="/ian@ianlewis.org.pem.pub">ian@ianlewis.org.pem.pub</a> and viewed at
-<a href="/ian@ianlewis.org.pem.pub.txt">ian@ianlewis.org.pem.pub.txt</a></p>
-
-<ul>
-  <li>Fingerprint: 12C7 4E53 8D98 B426 3669 DEF0 04FF D449 3ADA 4FC8</li>
-  <li>Expiration: 2035-01-19</li>
-</ul>
-
-  </div>
-</div>
-
-
-      </section>
-      <footer class="condensed">
-        <ul class="social about-footer condensed"><li>
-          <a rel="me" href="https://github.com/ianlewis" target="_blank">
-            <i class="icon-github-circled"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="https://www.linkedin.com/in/ianmlewis" target="_blank">
-            <i class="icon-linkedin-squared"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="https://bsky.app/profile/ianlewis.org" target="_blank">
-            <i class="icon-bluesky"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="https://hachyderm.io/@ianlewis" target="_blank">
-            <i class="icon-mastodon"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="https://keybase.io/ianlewis" target="_blank">
-            <i class="icon-keybase"></i>
-          </a>
-        </li><li>
-          <a rel="me" href="mailto:ian@ianlewis.org" target="_blank">
-            <i class="icon-mail"></i>
-          </a>
-        </li></ul><nav class="navigation about-footer condensed">
-        <ul>
-          
-          <li>
-            <a href="/en">English Blog</a>
-          </li>
-          
-          <li>
-            <a href="/jp">日本語ブログ</a>
-          </li>
-          
-          <li>
-            <a href="/">About Me</a>
-          </li>
-          
-          <li>
-            <a href="/projects">Projects</a>
-          </li>
-          
-          <li>
-            <a href="/til">Today I Learned</a>
-          </li>
-          
-        </ul>
-      </nav><div class="theme-toggle about-footer condensed">
-        <button type="button" data-theme="light" aria-label="Light mode" title="Light mode">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
-        <button type="button" data-theme="auto" aria-label="Auto mode" title="Auto mode">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-        </button>
-        <button type="button" data-theme="dark" aria-label="Dark mode" title="Dark mode">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-      </div><p class="about-footer condensed">&copy; 2025 Ian Lewis</p>
-      
-      </footer>
-    </main>
-    
-      <script src="/assets/js/darkmode.js" nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1C2E36DTVT" nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk"></script>
-      <script nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk">
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-1C2E36DTVT');
-      </script>
-  </body>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
-
