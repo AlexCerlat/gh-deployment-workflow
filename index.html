@@ -1,563 +1,304 @@
-<!DOCTYPE html>
-<html lang="en-US" class="hide-scroll">
-<head> 
-    <title>Web hosting company HTML Template Live Demo</title>
-    <meta name="Keywords">
-    <meta name="Description">
-    
-
-    <link rel="shortcut icon" href="https://csite.nicepage.com/favicon.ico" type="image/x-icon">
-
-    
-    
-
-
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width">
-
-
-<script src="//capp.nicepage.com/53360d2b4cfb347a5b8c531a76b99f4e61b40091/main-libs.js" ></script>
-<link href="//capp.nicepage.com/53360d2b4cfb347a5b8c531a76b99f4e61b40091/main-libs.css" rel="stylesheet" />
-
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans:200,300,400,700,800,900&amp;subset=latin" rel="preload" as="font" />
-
-
-
-
-
-<script>
-    window.isAuthenticated = 0;
-    window.useExternalGtmCode = 0;
-    window.clientUserId = 0;
-    window.clientUserName = '';
-    window.userCountryCode = '';
-    window.logPageEvent = 1;
-    window.userHasAdsParams = 1;
-    window.utmSourceFromReferrer = 0;
-    window.currentLang = '';
-    window.baseUrl = 'html-templates';
-    window.currentUrl = 'html-templates';
-    window.np_userId = '';
-    window.isAmplitudeInitialized = false;
-    window.sha256Email = '';
-
-    function getCookieOrLocalStorage(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) {
-                return c.substring(nameEQ.length, c.length);
-            }
-        }
-        var lsValue = localStorage.getItem(name);
-        return !!lsValue;
-    }
-
-    function sendAnalyticsData(eventType, props, cb) {
-        var json = { data: {} };
-        json.userToken = np_userId;
-        json.data.adsParams = $.cookie('AdsParameters');
-        json.data.ga = $.cookie('_ga');
-        json.data.gac = $.cookie('_gac_UA-88868916-2');
-        json.data.userAgent = navigator.userAgent;
-        json.data.eventType = eventType;
-        json.data.props = props;
-        $.ajax({
-            'type': 'POST',
-            'url': '/Feedback/SendAdsLog',
-            'contentType': 'application/json; charset=utf-8',
-            'data': JSON.stringify(json),
-            'dataType': 'json',
-            'complete': cb || function() {}
-        });
-    }
-
-    function initializeAmplitudeUser() {
-        if (isAmplitudeInitialized) {
-            return;
-        }
-        isAmplitudeInitialized = true;
-
-        if (clientUserId > 0)
-        {
-            identifyAmplitudeUser(clientUserId, clientUserName);
-        }
-        else
-        {
-            identifyAmplitudeUser(null);
-        }
-    }
-
-    function sendAmplitudeAnalyticsData(eventName, eventProperties, userProperties, callback_function) {
-        initializeAmplitudeUser();
-
-        if (userProperties) {
-            if(userProperties.utm_source || userProperties.utm_campaign) {
-                var identify = new amplitude.Identify();
-                identify.setOnce("utm_campaign", userProperties.utm_campaign);
-                identify.setOnce("utm_source", userProperties.utm_source);
-                identify.setOnce("utm_content", userProperties.utm_content);
-                identify.setOnce("utm_group", userProperties.utm_group);
-                identify.setOnce("utm_term", userProperties.utm_term);
-                identify.setOnce("utm_page", userProperties.utm_page);
-                identify.setOnce("utm_page2", userProperties.utm_page);
-                identify.setOnce("referrer", userProperties.referrer);
-
-                amplitude.getInstance().identify(identify);
-
-                userProperties.utm_source_last = userProperties.utm_source;
-                userProperties.utm_campaign_last = userProperties.utm_campaign;
-                userProperties.utm_content_last = userProperties.utm_content;
-                userProperties.utm_group_last = userProperties.utm_group;
-                userProperties.utm_term_last = userProperties.utm_term;
-                userProperties.utm_page_last = userProperties.utm_page;
-            }
-
-            var userProps = objectWithoutProperties(userProperties, ["utm_campaign", "utm_source","utm_content", "utm_term", "utm_page", "utm_group", "referrer"]);
-            amplitude.getInstance().setUserProperties(userProps);
-        }
-
-        if (!eventProperties) {
-            eventProperties = {};
-        }
-
-        eventProperties.WebSite = 'true';
-        eventProperties.IsAuthenticated = window.isAuthenticated;
-        eventProperties.country_code = getCountryCode();
-        eventProperties.lang = window.currentLang || '';
-
-        var fullPageUrl = window.location.pathname.split('?')[0];
-        eventProperties.full_page_url = fullPageUrl;
-        eventProperties.page_url = clearPageUrl(fullPageUrl);
-
-        if (typeof callback_function === 'function') {
-            amplitude.getInstance().logEvent(eventName, eventProperties, callback_function);
-        } else {
-            amplitude.getInstance().logEvent(eventName, eventProperties);
-        }
-    }
-
-    function identifyAmplitudeUser(userId, token) {
-        if (userId) {
-            amplitude.getInstance().setUserProperties({
-                "Token": token,
-                "UserId": userId
-            });
-        }
-
-        var identify = new amplitude.Identify();
-        amplitude.getInstance().identify(identify);
-        if (userId) {
-            amplitude.getInstance().setUserId(userId);
-        }
-    }
-
-    function getUtmParamsFromUrl() {
-        var hash = window.location.hash;
-        var url = new URL(window.location.href);
-        if (hash && hash.indexOf('utm_') >= 0) {
-            url = new URL(window.location.origin + window.location.pathname + hash.replace('#', '?'));
-        }
-
-        if (!url.searchParams) {
-            return '';
-        }
-        return getUtmParams(url);
-    }
-
-    function hasGoogleIdFromUrl() {
-        var url = new URL(window.location.href);
-        if (!url.searchParams) {
-            return false;
-        }
-        return !!url.searchParams.get('gclid');
-    }
-
-    function sendAnalyticsFromUrl(referrer, pageType) {
-        var urlIsAvailable = typeof URL === "function" || (navigator.userAgent.indexOf('MSIE') !== -1 && typeof URL === 'object');
-        if (!urlIsAvailable) {
-            return;
-        }
-
-        var utmParams = getUtmParamsFromUrl();
-        if (!utmParams) {
-            return;
-        }
-
-        var gclidFromUrl = utmParams.gclid;
-        var utmParamsFromUrl = !!utmParams.utmSource || !!utmParams.utmCampaign || !!utmParams.gclid;
-        if (!utmParamsFromUrl && userHasAdsParams)
-        {
-            utmParams = getUtmParamsFromCookie();
-        }
-
-        var canLog = canLogToAmplitude(pageType);
-        if (utmParamsFromUrl || utmSourceFromReferrer) {
-            var fullPageUrl = window.location.pathname.split('?')[0];
-            var pageUrl = clearPageUrl(fullPageUrl);
-            var userProps = {
-                "utm_source": utmParams.utmSource,
-                "utm_campaign": utmParams.utmCampaign,
-                "utm_content": utmParams.utmContent,
-                "utm_group": utmParams.utmGroup,
-                "utm_term": utmParams.utmTerm,
-                "utm_page": getUtmPageValue(pageUrl),
-                "utm_lang": window.currentLang || '',
-                "referrer": referrer
-            };
-
-            if (gclidFromUrl) {
-                var landingUrl = pageUrl.startsWith('/') && pageUrl !== '/' ? pageUrl.substr(1) : pageUrl;
-                userProps.landing_page = landingUrl;
-
-                var event = {
-                    'Page': landingUrl,
-                    'Url': window.location.href,
-                    'utm_campaign_event': utmParams.utmCampaign,
-                    'utm_group_event': utmParams.utmGroup
-
-                }
-                sendAmplitudeAnalyticsData('Landing Page', event, userProps);
-            } else {
-                var eventProps = {
-                    "utm_source": utmParams.utmSource,
-                    "utm_campaign": utmParams.utmCampaign,
-                    "utm_content": utmParams.utmContent,
-                    "utm_group": utmParams.utmGroup,
-                    "utm_term": utmParams.utmTerm
-                };
-
-                if (utmParams.utmSource === "elastic") {
-                    sendAmplitudeAnalyticsData('Email Click', eventProps);
-                }
-
-                if (canLog) {
-                    sendAmplitudeAnalyticsData('Campaign', eventProps, userProps);
-                }
-            }
-        }
-
-        if (logPageEvent && canLog || (pageType === 'Pricing Page' && window.isValidCountry(true))) {
-            var pageEventProps = {
-                'type': pageType,
-                'accepted_country': isValidCountry(),
-                'force_log': !canLog
-            };
-
-            if (utmParams.gclid) {
-                pageEventProps.googleClickId = utmParams.gclid;
-            }
-
-            sendAmplitudeAnalyticsData('Page View', pageEventProps);
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        if (location.href.indexOf('/frame/') === -1 && window.location.href.indexOf('skipCookie') === -1) {
-            PureCookie.initCookieConsent();
-        }
-        setCountryCode('https://location.nicepagesrv.com/country');
-        setUserIdCookie();
-
-        var referrer = '';
-        var pageType = 'Template Page Preview';
-        sendAnalyticsFromUrl(referrer, pageType);
-    });
-</script>
-
-    <script>
-        // Define dataLayer and the gtag function.
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        var consentDefaultValue = 'granted';
-        gtag('consent', 'default', {
-            'ad_storage': consentDefaultValue,
-            'ad_user_data': consentDefaultValue,
-            'ad_personalization': consentDefaultValue,
-            'analytics_storage': consentDefaultValue
-        });
-        
-        if (hasGoogleIdFromUrl()) {
-            useExternalGtmCode = 1;
-        }
-    </script>
-    <!-- Google Tag Manager -->
-    <script>
-        if (useExternalGtmCode) {
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://load.api9.nicepage.com/nldlswob.js?st='+i+dl+'';f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','W76XGFR');
-        } else {
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W76XGFR');
-        }
-    </script>
-    <!-- End Google Tag Manager -->
-    <!-- Facebook Pixel Code -->
-        <script>
-            if(window.hideFacebookPixelCode !== true) {
-                !function (f, b, e, v, n, t, s) {
-                    if (f.fbq) return; n = f.fbq = function () {
-                        n.callMethod ?
-                            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-                    };
-                    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-                    n.queue = []; t = b.createElement(e); t.async = !0;
-                    t.src = v; s = b.getElementsByTagName(e)[0];
-                    s.parentNode.insertBefore(t, s)
-                }(window, document, 'script',
-                    'https://connect.facebook.net/en_US/fbevents.js');
-
-                var fbInitOptions = { em: '' };
-                if (clientUserId > 0) {
-                    fbInitOptions.external_id = clientUserId;
-                }
-
-                fbq('init', '251025992170426', fbInitOptions);
-                fbq('track', 'PageView');
-            }
-        </script>
-        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=251025992170426&ev=PageView&noscript=1" /></noscript>
-    <!-- End Facebook Pixel Code -->
-
-<!-- Amplitude Code -->
-<script type="text/javascript">
-    (function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script")
-            ;r.type="text/javascript"
-            ;r.integrity="sha384-d/yhnowERvm+7eCU79T/bYjOiMmq4F11ElWYLmt0ktvYEVgqLDazh4+gW9CKMpYW"
-            ;r.crossOrigin="anonymous";r.async=true
-            ;r.src="https://cdn.amplitude.com/libs/amplitude-5.2.2-min.gz.js"
-            ;r.onload=function(){if(!e.amplitude.runQueuedFunctions){
-                console.log("[Amplitude] Error: could not load SDK")}}
-            ;var i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)
-            ;function s(e,t){e.prototype[t]=function(){
-            this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
-        var o=function(){this._q=[];return this}
-            ;var a=["add","append","clearAll","prepend","set","setOnce","unset"]
-            ;for(var u=0;u<a.length;u++){s(o,a[u])}n.Identify=o;var c=function(){this._q=[]
-                ;return this}
-            ;var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"]
-            ;for(var p=0;p<l.length;p++){s(c,l[p])}n.Revenue=c
-            ;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
-            ;function v(e){function t(t){e[t]=function(){
-                e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
-            for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
-                e=(!e||e.length===0?"$default_instance":e).toLowerCase()
-                    ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
-            ;e.amplitude=n})(window,document);
-    amplitude.getInstance().init("878f4709123a5451aff838c1f870b849");
-</script>
-
-<script>
-var shareasaleSSCID=shareasaleGetParameterByName("sscid");function shareasaleSetCookie(e,a,r,s,t){if(e&&a){var o,n=s?"; path="+s:"",i=t?"; domain="+t:"",S="";r&&((o=new Date).setTime(o.getTime()+r),S="; expires="+o.toUTCString()),document.cookie=e+"="+a+S+n+i+"; SameSite=None;Secure"}}function shareasaleGetParameterByName(e,a){a||(a=window.location.href),e=e.replace(/[\[\]]/g,"\\$&");var r=new RegExp("[?&]"+e+"(=([^&#]*)|&|#|$)").exec(a);return r?r[2]?decodeURIComponent(r[2].replace(/\+/g," ")):"":null}shareasaleSSCID&&shareasaleSetCookie("shareasaleSSCID",shareasaleSSCID,94670778e4,"/");
-</script>
-
-
-
-
-
-<link rel="preconnect" href="https://images01.nicepagecdn.com" />
-<link rel="preconnect" href="https://csite.nicepage.com" />
-
-<!--[if lt IE 9]>
-    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-
-
-
-
-
-
-    <script>
-        window.serverSettings = {
-            fbAppId: '290410448063109',
-            googleAppId: '13150095650-mo8psu2colep6uv90a2mu6r87u87s35a.apps.googleusercontent.com'
-        };
-    </script>
-    <script src="https://accounts.google.com/gsi/client?hl=en" async></script>
-    <script src="//csite.nicepage.com/Scripts/Site/auth-common.js?version=53360d2b4cfb347a5b8c531a76b99f4e61b40091" defer></script>
-
-
-    
-    <meta name="robots" content="noindex,nofollow">
-    <script type="text/javascript">
-        var device = 'desktop';
-        function init($) {
-            $('#previewDesktopBtn').click(function (e) {
-                setLivePreviewFrameSize($(this));
-                setActiveResponsiveButton(this);
-                e.preventDefault();
-            });
-
-            $('#previewLaptopBtn').click(function (e) {
-                setLivePreviewFrameSize($(this));
-                setActiveResponsiveButton(this);
-                e.preventDefault();
-            });
-            $('#previewTabletBtn').click(function (e) {
-                setLivePreviewFrameSize($(this));
-                setActiveResponsiveButton(this);
-                e.preventDefault();
-            });
-            $('#previewPhoneHorizontalBtn').click(function (e) {
-                setLivePreviewFrameSize($(this));
-                setActiveResponsiveButton(this);
-                e.preventDefault();
-            });
-            $('#previewPhoneBtn').click(function (e) {
-                setLivePreviewFrameSize($(this));
-                setActiveResponsiveButton(this);
-                e.preventDefault();
-            });
-
-            detectActiveResponsiveButton();
-        }
-
-        if (jQuery.isReady) {
-            init(jQuery);
-        } else {
-            jQuery(function ($) {
-                init($);
-            });
-        }
-
-        function setActiveResponsiveButton(btn) {
-            $(".page-preview-header > a").removeClass("active");
-            $(btn).addClass("active");
-        }
-
-        function detectActiveResponsiveButton() {
-            var d = device;
-            if (!d) {
-                d = 'desktop';
-            }
-            $("#preview" + d.charAt(0).toUpperCase() + d.substr(1) + "Btn").click();
-        }
-
-        function getDataPreviewSizeAttr(el) {
-            return el.closest("[data-preview-size]").attr("data-preview-size");
-        }
-
-        function setLivePreviewFrameSize(srcEl) {
-            var getScrollbarWidth = function () {
-                var s = $('<div style="width:100px;height:100px;overflow:scroll;visibility:hidden;position:absolute;top:-99999px"><div style="height:200px;"></div></div>')
-                    .appendTo("body");
-                var res = s.width() - s.find("div").last().width();
-                s.remove();
-                return res;
-            };
-            var attr = getDataPreviewSizeAttr(srcEl);
-            $('#livePreviewFrame').width(attr.indexOf("%") !== -1 ? attr : parseInt(attr, 10) + getScrollbarWidth());
-        }
-
-    </script>
-    <style>
-        .dialog-wrapper {
-            display: none !important;
-        }
-
-        .wrap,
-        #main {
-            height: 100vh;
-            margin: 0 !important;
-        }
-
-        iframe {
-            display: none;
-        }
-
-
-        html,
-        body {
-            height: 100%;
-        }
-
-        .page-preview {
-            border-radius: 0;
-            height: 100%;
-        }
-
-        .page-preview-header {
-            background: #f2f2f2;
-            border: none;
-            height: 70px;
-            position: relative;
-            text-align: center;
-        }
-
-        .page-preview-header > a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 4px;
-        }
-
-        .page-preview-header > a:hover {
-            background: #e2f0fc;
-            text-decoration: none;
-        }
-
-        .page-preview-header > a.active {
-            background: #c9e4f9;
-        }
-
-        .page-preview-header > .close {
-            float: right;
-            margin-right: 10px;
-        }
-
-        .page-preview-body {
-            height: calc(100% - 70px);
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .page-preview-body iframe {
-            border: none;
-            display: inline-block;
-            height: 100%;
-        }
-    </style>
-
-</head>
-    <body>
-        
-
-
-<div class="page-preview">
-    <div class="page-preview-header">
-        <a class="hidden-sm hidden-xs" href="#" id="previewDesktopBtn" data-preview-size="100%"><img alt="Responsive Desktop Mode" src="//csite.nicepage.com/Images/Site/responsive-desktop.png"></a>
-        <a class="hidden-sm hidden-xs" href="#" id="previewLaptopBtn" data-preview-size="1040px"><img alt="Responsive Laptop Mode" src="//csite.nicepage.com/Images/Site/responsive-laptop.png"></a>
-        <a class="hidden-xs" href="#" id="previewTabletBtn" data-preview-size="820px"><img alt="Responsive Tablet Mode" src="//csite.nicepage.com/Images/Site/responsive-tablet.png"></a>
-        <a class="hidden-xs" href="#" id="previewPhoneHorizontalBtn" data-preview-size="640px"><img alt="Responsive Phone Horizontal Mode" src="//csite.nicepage.com/Images/Site/responsive-phone-horizontal.png"></a>
-        <a class="hidden-xs" href="#" id="previewPhoneBtn" data-preview-size="440px"><img alt="Responsive Phone Mode" src="//csite.nicepage.com/Images/Site/responsive-phone.png"></a>
-        <a class="close" href="/ht/749340/web-hosting-company-html-template"><img alt="Close" src="//csite.nicepage.com/Images/Site/icon-close.png"></a>
-    </div>
-    <div class="page-preview-body">
-        <iframe id="livePreviewFrame" src="https://website745822.nicepage.io/about-us.html?version=b76d3211-4b5e-4816-add9-0c44507db09d" width="1057" height="640" style="width:100%;"></iframe>
-    </div>
+<!doctype html>
+<html lang="en">
+  <head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge"><link rel="icon" type="image/png" href="/assets/images/profile_16x16.png" sizes="16x16"><link rel="icon" type="image/png" href="/assets/images/profile_32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="/assets/images/profile_64x64.png" sizes="64x64"><link rel="icon" type="image/png" href="/assets/images/profile_96x96.png" sizes="96x96"><link rel="stylesheet" href="/assets/css/style.css"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Ian Lewis | Engineer in Tokyo</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Ian Lewis" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Ian Lewis is an engineer based in Tokyo, Japan. His current interests are in Container Native Security, Supply Chain Security, Containers, and Kubernetes." />
+<meta property="og:description" content="Ian Lewis is an engineer based in Tokyo, Japan. His current interests are in Container Native Security, Supply Chain Security, Containers, and Kubernetes." />
+<link rel="canonical" href="https://www.ianlewis.org/" />
+<meta property="og:url" content="https://www.ianlewis.org/" />
+<meta property="og:site_name" content="Ian Lewis" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Ian Lewis" />
+<meta name="twitter:site" content="@IanMLewis" />
+<script type="application/ld+json" nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk">
+{"@context":"https://schema.org","@type":"WebSite","description":"Ian Lewis is an engineer based in Tokyo, Japan. His current interests are in Container Native Security, Supply Chain Security, Containers, and Kubernetes.","headline":"Ian Lewis","name":"Ian Lewis","sameAs":["https://github.com/ianlewis","https://www.linkedin.com/in/ianmlewis","https://bsky.app/profile/ianlewis.org","https://hachyderm.io/@ianlewis","https://keybase.io/ianlewis","https://x.com/IanMLewis"],"url":"https://www.ianlewis.org/"}</script>
+<!-- End Jekyll SEO tag -->
+<link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Ian Lewis | English Blog"
+    href="/en/feed.xml"
+  ><link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Ian Lewis | 日本語ブログ"
+    href="/jp/feed.xml"
+  ><link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Ian Lewis | Today I Learned"
+    href="/til/feed.xml"
+  ><script src="/assets/js/darkmode.js" nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk"></script>
+</head><body>
+    <main class="container">
+      <section class="about">
+        <div class="about-header condensed">
+          <div class="about-title">
+            <a href="/">
+              <img class="light" src="/assets/images/profile.png" alt="Ian Lewis">
+                <img class="dark" src="/assets/images/profile.png" alt="Ian Lewis">
+            </a>
+            <h2 id="title">
+              <a href="/">Ian Lewis</a>
+            </h2>
+          </div>
+            <p class="tagline">Engineer in Tokyo</p>
+        </div>
+        <ul class="social about-footer condensed"><li>
+          <a rel="me" href="https://github.com/ianlewis" target="_blank">
+            <i class="icon-github-circled"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="https://www.linkedin.com/in/ianmlewis" target="_blank">
+            <i class="icon-linkedin-squared"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="https://bsky.app/profile/ianlewis.org" target="_blank">
+            <i class="icon-bluesky"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="https://hachyderm.io/@ianlewis" target="_blank">
+            <i class="icon-mastodon"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="https://keybase.io/ianlewis" target="_blank">
+            <i class="icon-keybase"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="mailto:ian@ianlewis.org" target="_blank">
+            <i class="icon-mail"></i>
+          </a>
+        </li></ul><nav class="navigation about-footer condensed">
+        <ul>
+          
+          <li>
+            <a href="/en">English Blog</a>
+          </li>
+          
+          <li>
+            <a href="/jp">日本語ブログ</a>
+          </li>
+          
+          <li>
+            <a href="/">About Me</a>
+          </li>
+          
+          <li>
+            <a href="/projects">Projects</a>
+          </li>
+          
+          <li>
+            <a href="/til">Today I Learned</a>
+          </li>
+          
+        </ul>
+      </nav><div class="theme-toggle about-footer condensed">
+        <button type="button" data-theme="light" aria-label="Light mode" title="Light mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button type="button" data-theme="auto" aria-label="Auto mode" title="Auto mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </button>
+        <button type="button" data-theme="dark" aria-label="Dark mode" title="Dark mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div><p class="about-footer condensed">&copy; 2025 Ian Lewis</p>
+      
+      </section>
+      <section class="content">
+        <div class="post-container"><div class="post">
+    <!-- markdownlint-disable MD041 -->
+<!-- header is in include file -->
+
+<h1 id="hi-im-ian-">Hi, I’m Ian 👋</h1>
+
+<p>I’m an engineer based in Tokyo, Japan 🗼</p>
+
+<p>👨‍💻 I mostly code in <a href="https://go.dev/">Go</a>, <a href="https://www.python.org/">Python</a>,
+<a href="https://www.typescriptlang.org/">TypeScript</a>, and Bash but dabble in other
+languages as well. I am learning <a href="https://www.rust-lang.org/">Rust</a>.</p>
+
+<p>🔭 My current interests are in cloud-native infrastructure, defensive security,
+and developer experience. I most recently worked in Container Security and
+<a href="https://en.wikipedia.org/wiki/Software_supply_chain">Software Supply Chain
+Security</a>.</p>
+
+<p>🗾 I have been based in Tokyo since 2006 and I am fluent in Japanese, passing
+<a href="https://www.jlpt.jp/">Japanese-Language Proficiency Test</a> (JLPT) N1 in 2013.</p>
+
+<h2 id="️-work">🛠️ Work</h2>
+
+<p>☁️ I was an engineer at <a href="https://cloud.google.com/">Google Cloud</a> working on
+developer experience for <a href="https://kubernetes.io/">Kubernetes</a>, container
+security, and software supply chain security. While there I founded <a href="https://k8sjp.connpass.com/">Kubernetes
+Meetup Tokyo</a>, one of the largest local Kubernetes
+communities in the world. I was a contributor to the <a href="https://slsa.dev/">SLSA</a>
+supply chain security framework and the <a href="https://gvisor.dev/">gVisor</a> container
+sandbox.</p>
+
+<p>Prior to Google I focused on developer communities developing
+<a href="https://connpass.com">Connpass</a>, the largest IT meetup event tool in Japan with
+hundreds of thousands of users. I also co-founded and served on the board of
+<a href="https://www.pycon.jp/">PyCon JP</a>, the largest Python event in Japan. During
+this time I was a <a href="https://developers.google.com/experts/">Google Developer
+Expert</a> specializing in the Python
+language version of <a href="https://cloud.google.com/appengine/">App Engine</a>.</p>
+
+<p>📖 I wrote <a href="https://www.amazon.co.jp/-/en/%E3%83%91%E3%83%BC%E3%83%95%E3%82%A7%E3%82%AF%E3%83%88-Python-%E6%94%B9%E8%A8%822%E7%89%88-PERFECT-5/dp/429711223X/">Perfect Python</a> with other Japanese
+Python community members, and have written articles for <a href="https://info.nikkeibp.co.jp/media/LIN/">Nikkei Linux
+Magazine</a>.</p>
+
+<p>My resume can be downloaded at the following links:</p>
+
+<ul>
+  <li><a href="https://github.com/ianlewis/resume/releases/latest/download/Ian_M_Lewis_Resume.pdf">English</a></li>
+  <li><a href="https://github.com/ianlewis/resume/releases/latest/download/Ian_M_Lewis_Resume.ja.pdf">Japanese</a></li>
+</ul>
+
+<h2 id="-contact">💬 Contact</h2>
+
+<p>If you want to have a chat with me you can book an appointment on my
+<a href="https://calendar.app.google/98BzZNZ424TMFrwh9">appointment page</a>. I can help
+you with:</p>
+
+<ul>
+  <li>DevOps / Infrastructure / Cloud Native / Security</li>
+  <li>Programming</li>
+  <li>Career advice</li>
+</ul>
+
+<p>You can contact me via my email at <a href="mailto:sandu.cerlat.sandu@gmail.com"><code class="language-plaintext highlighter-rouge">ian@ianlewis.org</code></a>.</p>
+
+<!-- markdownlint-enable MD041 -->
+
+<hr />
+
+<p>My public key can be downloaded at
+<a href="/ian@ianlewis.org.pem.pub">ian@ianlewis.org.pem.pub</a> and viewed at
+<a href="/ian@ianlewis.org.pem.pub.txt">ian@ianlewis.org.pem.pub.txt</a></p>
+
+<ul>
+  <li>Fingerprint: 12C7 4E53 8D98 B426 3669 DEF0 04FF D449 3ADA 4FC8</li>
+  <li>Expiration: 2035-01-19</li>
+</ul>
+
+  </div>
 </div>
-<a style="position:absolute;top:17px;left:10px;" href="/"><img alt="NicePage.com" src="//csite.nicepage.com/Images/logo-w.png"></a>
 
-        <script>
-            if (window.parent) {
-                var _w = 0, _h = 0;
-                var updateFormSize = function () {
-                    var form = $('form.shaped-form-extended,form.shaped-form');
-                    var w = form.outerWidth(true);
-                    var h = form.outerHeight(true);
-                    if (Math.abs(_w - w) > 5 || Math.abs(_h - h) > 5) {
-                        _w = w;
-                        _h = h;
-                        var msg = { key: 'login-frame-size', width: w, height: h };
-                        window.parent.postMessage(msg, "*");
-                    }
-                    setTimeout(updateFormSize, 300);
-                }
-                updateFormSize();
-            }
-        </script>
-    </body>
+
+      </section>
+      <footer class="condensed">
+        <ul class="social about-footer condensed"><li>
+          <a rel="me" href="https://github.com/ianlewis" target="_blank">
+            <i class="icon-github-circled"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="" target="_blank">
+            <i class="icon-linkedin-squared"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="" target="_blank">
+            <i class="icon-bluesky"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="" target="_blank">
+            <i class="icon-mastodon"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="" target="_blank">
+            <i class="icon-keybase"></i>
+          </a>
+        </li><li>
+          <a rel="me" href="mailto:sandu.cerlat.sandu@gmail.com" target="_blank">
+            <i class="icon-mail"></i>
+          </a>
+        </li></ul><nav class="navigation about-footer condensed">
+        <ul>
+          
+          <li>
+            <a href="/en">English Blog</a>
+          </li>
+          
+          <li>
+            <a href="/jp">日本語ブログ</a>
+          </li>
+          
+          <li>
+            <a href="/">About Me</a>
+          </li>
+          
+          <li>
+            <a href="/projects">Projects</a>
+          </li>
+          
+          <li>
+            <a href="/til">Today I Learned</a>
+          </li>
+          
+        </ul>
+      </nav><div class="theme-toggle about-footer condensed">
+        <button type="button" data-theme="light" aria-label="Light mode" title="Light mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button type="button" data-theme="auto" aria-label="Auto mode" title="Auto mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </button>
+        <button type="button" data-theme="dark" aria-label="Dark mode" title="Dark mode">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div><p class="about-footer condensed">&copy; 2025 Ian Lewis</p>
+      
+      </footer>
+    </main>
+    
+      <script src="/assets/js/darkmode.js" nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1C2E36DTVT" nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk"></script>
+      <script nonce="bfM4kAV4g0iPgDYjSvK92LVM77um75fk">
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-1C2E36DTVT');
+      </script>
+  </body>
 </html>
