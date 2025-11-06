@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alexandru Cerlat — Blog/Portfolio</title>
-  <meta name="description" content="Static blog and portfolio for Alexandru Cerlat, Networks Integration Engineer & QA Integration Engineer, focused on DevOps/DevSecOps."/>
-  <meta name="author" content="Alexandru Cerlat"/>
+  <title>Alexandru Cerlat — Portfolio & Blog</title>
+  <meta name="description" content="Portfolio and static blog for Alexandru Cerlat — Networks Integration Engineer & QA Integration Engineer targeting DevOps/DevSecOps excellence." />
+  <meta name="author" content="Alexandru Cerlat" />
   <meta name="color-scheme" content="light dark" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Alexandru Cerlat — Blog/Portfolio"/>
-  <meta property="og:description" content="Networks Integration Engineer & QA Integration Engineer. Future DevOps/DevSecOps."/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://www.linkedin.com/in/alexandru-cerlat-274188215/"/>
-  <meta property="og:image" content="https://raw.githubusercontent.com/AlexCerlat/gh-deployment-workflow/main/image.jpg"/>
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Alexandru Cerlat — Portfolio & Blog" />
+  <meta property="og:description" content="Networks Integration Engineer & QA Integration Engineer. Building secure, automated, observable infrastructure." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alexcerlat.github.io/" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/AlexCerlat/gh-deployment-workflow/main/image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="icon" href="favicon.ico" />
   <style>
     :root{
@@ -25,6 +28,7 @@
       --brand-2:#8ef6d2;
       --border: #232a43;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
     }
     [data-theme="light"]{
       --bg: #f7f9ff;
@@ -44,10 +48,12 @@
       background: var(--bg);
       color: var(--text);
       line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1000px;margin:0 auto;padding:24px}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px}
     header{
       position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0));backdrop-filter:saturate(130%) blur(6px)
     }
@@ -55,56 +61,81 @@
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:40px;height:40px;border-radius:12px;background:url('https://raw.githubusercontent.com/AlexCerlat/gh-deployment-workflow/main/image.jpg') center/cover no-repeat;box-shadow:var(--shadow)}
     .brand h1{font-size:18px;margin:0}
-    .nav-links{display:flex;gap:16px;align-items:center}
+    .nav-links{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
     .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 14px;border-radius:12px;box-shadow:var(--shadow)}
     .btn:hover{transform:translateY(-1px)}
     .hero{padding:48px 24px 16px;border-bottom:1px solid var(--border)}
     .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
-    .profile-img{width:100%;border-radius:16px;box-shadow:var(--shadow)}
+    .profile-img{width:100%;border-radius:var(--radius);box-shadow:var(--shadow)}
     .pill{display:inline-flex;gap:8px;align-items:center;background:var(--muted-bg);color:var(--text-muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px}
     h2{margin:8px 0 12px;font-size:28px}
+    h3{margin:0 0 8px}
     p{margin:0 0 14px}
     .kpi{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
     .kpi .card{flex:1;min-width:180px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
     .grid{display:grid;gap:16px}
     .grid.cols-3{grid-template-columns:repeat(3,1fr)}
     .grid.cols-2{grid-template-columns:repeat(2,1fr)}
     @media (max-width:900px){.hero-grid,.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
     section{scroll-margin-top:80px}
-    .h{display:flex;align-items:center;justify-content:space-between}
+    .h{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .muted{color:var(--text-muted)}
-    .list{display:grid;gap:10px}
+    .list{display:grid;gap:10px;padding:0;margin:0}
     .list li{list-style:none;padding:12px;border:1px dashed var(--border);border-radius:12px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.02))}
     footer{border-top:1px solid var(--border);margin-top:24px;padding:24px;color:var(--text-muted);font-size:14px}
     .tag{display:inline-flex;padding:4px 8px;border:1px solid var(--border);border-radius:999px;font-size:12px;background:var(--muted-bg);color:var(--text-muted)}
     .stack{display:flex;gap:8px;flex-wrap:wrap}
     .post{display:block}
-    .post h3{margin:4px 0 6px}
-    .post small{color:var(--text-muted)}
+    .post h4{margin:4px 0 6px}
     .toc{display:flex;gap:8px;flex-wrap:wrap}
     .toc a{border:1px solid var(--border);background:var(--muted-bg);padding:8px 10px;border-radius:999px}
     .sep{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:16px 0}
+    .badges{display:flex;flex-wrap:wrap;gap:8px}
+    .badge{border:1px solid var(--border);background:var(--muted-bg);border-radius:999px;padding:6px 10px;font-size:12px}
+    .action-row{display:flex;gap:8px;flex-wrap:wrap}
+    /* Accessible focus */
+    :where(a,button):focus{outline:2px solid var(--brand-2);outline-offset:2px;border-radius:10px}
   </style>
+
   <script>
+    // Theme preference
     function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t)}
     function toggleTheme(){const cur=document.documentElement.getAttribute('data-theme');setTheme(cur==='dark'?'light':'dark')}
     const saved=localStorage.getItem('theme');if(saved){setTheme(saved)}
+    // Smooth anchors
     addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a){e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})}})
+  </script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alexandru Cerlat",
+    "jobTitle": "Networks Integration Engineer & QA Integration Engineer",
+    "url": "https://alexcerlat.github.io/",
+    "image": "https://raw.githubusercontent.com/AlexCerlat/gh-deployment-workflow/main/image.jpg",
+    "sameAs": [
+      "https://www.linkedin.com/in/alexandru-cerlat-274188215/",
+      "https://github.com/AlexCerlat"
+    ],
+    "knowsAbout": ["Networking","Cisco","Juniper","MikroTik","Fortinet","DevOps","DevSecOps","Automation","Terraform","Ansible"]
+  }
   </script>
 </head>
 <body>
+  <!-- NAV -->
   <header>
-    <div class="nav wrap">
+    <div class="nav wrap" role="navigation" aria-label="Primary">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
-        <h1>Alexandru Cerlat</h1>
+        <h1 style="margin:0">Alexandru Cerlat</h1>
       </div>
       <nav class="nav-links">
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
         <a href="#certs">Certifications</a>
-        <a href="#posts">Blog</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <button class="btn" onclick="toggleTheme()" aria-label="Toggle theme">🌓 Theme</button>
       </nav>
@@ -112,16 +143,162 @@
   </header>
 
   <main class="wrap">
-    <section class="hero" id="about">
+    <!-- HERO / ABOUT -->
+    <section class="hero" id="about" aria-labelledby="about-title">
       <div class="hero-grid">
-               <div>
-          <h2>About Me</h2>
-          <p>I’m Alexandru Cerlat—a network engineer who thrives at the edge of technology and practical problem-solving. My background is in Telecommunications (Universitatea Tehnică a Moldovei), and I’ve built my expertise through real-world projects in banking, corporate, SMB, and cloud environments.</p>
-          <p>Staying hands-on is important to me: I love taking on challenging migrations, exploring automation in cloud environments, and sharing what I learn with others. Whether it’s VMware, Cisco, Fortinet, MikroTik, or scripting with Ansible and Terraform, I’m always refining my toolkit.</p>
-          <p>I’m passionate about transforming vulnerable, static networks into resilient, secure, and dynamic infrastructures. I also love creating educational content, sharing project stories, and connecting with people who are navigating similar tech journeys.</p>
+        <div>
+          <span class="pill">Delivering secure automation • DevOps/DevSecOps trajectory</span>
+          <h2 id="about-title">About Me</h2>
+          <p>I’m Alexandru Cerlat — a network engineer operating at the intersection of resilient design and practical delivery. Trained in Telecommunications (Technical University of Moldova), I’ve shipped outcomes across banking, enterprise, SMB, and cloud environments.</p>
+          <p>Hands-on by design: challenging migrations, cloud automation, and knowledge sharing. Whether it’s VMware, Cisco, Fortinet, MikroTik — or scripting with Ansible and Terraform — I iterate toward cleaner, safer, faster infrastructure.</p>
+          <div class="badges" aria-label="Core capabilities">
+            <span class="badge">Networking</span>
+            <span class="badge">Automation</span>
+            <span class="badge">Security by Default</span>
+            <span class="badge">Observability</span>
+            <span class="badge">CI/CD</span>
+            <span class="badge">Cloud</span>
+          </div>
+
+          <div class="sep"></div>
+
+          <div class="kpi">
+            <div class="card"><strong>5+ years</strong><br/><span class="muted">NOC/Core & Aggregation (Juniper EX/MX960)</span></div>
+            <div class="card"><strong>Multi-vendor</strong><br/><span class="muted">Cisco · Juniper · Fortinet · MikroTik · OCI</span></div>
+            <div class="card"><strong>QA/Integration</strong><br/><span class="muted">Testing • Validation • E2E Visibility</span></div>
+          </div>
+
+          <div class="sep"></div>
+
+          <div class="action-row" aria-label="Primary actions">
+            <a class="btn" href="#contact">📩 Let’s collaborate</a>
+            <a class="btn" href="cv/Alexandru_Cerlat_CV_EN.pdf" target="_blank" rel="noopener">⬇️ Download CV (EN)</a>
+          </div>
         </div>
-        <div class="card">
-          <img src="https://raw.githubusercontent.com/AlexCerlat/gh-deployment-workflow/main/image.jpg" alt="Alexandru Cerlat profile image" class="profile-img" />
+
+        <div class="card" style="padding:0">
+          <img class="profile-img" src="https://raw.githubusercontent.com/AlexCerlat/gh-deployment-workflow/main/image.jpg" alt="Portrait of Alexandru Cerlat" />
         </div>
       </div>
     </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs" aria-labelledby="certs-title" style="padding:24px 0">
+      <div class="h">
+        <h2 id="certs-title">Certifications</h2>
+        <span class="muted">Validated skills & continual learning</span>
+      </div>
+
+      <div class="grid cols-3" role="list">
+        <div class="card" role="listitem"><h3>CCNA</h3><p class="muted">Cisco Certified Network Associate</p></div>
+        <div class="card" role="listitem"><h3>FCA Cybersecurity</h3><p class="muted">Fortinet Certified Associate</p></div>
+        <div class="card" role="listitem"><h3>FCF Cybersecurity</h3><p class="muted">Foundational Cybersecurity</p></div>
+        <div class="card" role="listitem"><h3>FCP Network Security</h3><p class="muted">Fortinet Certified Professional</p></div>
+        <div class="card" role="listitem"><h3>FortiAnalyzer 7.4</h3><p class="muted">Administrator</p></div>
+        <div class="card" role="listitem"><h3>FortiGate 7.6</h3><p class="muted">Administrator</p></div>
+        <div class="card" role="listitem"><h3>Juniper JNCA-Junos</h3><p class="muted">Associate</p></div>
+        <div class="card" role="listitem"><h3>Linux Foundation</h3><p class="muted">LFC108, LFD102, LFD103, LFS101, LFS151, LFS162, LFS169</p></div>
+        <div class="card" role="listitem"><h3>OCI 2025</h3><p class="muted">Fundamentals & Architect Associate</p></div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-title" style="padding:24px 0">
+      <div class="h">
+        <h2 id="projects-title">Projects</h2>
+        <span class="muted">Outcome-driven delivery (selected)</span>
+      </div>
+
+      <div class="grid cols-2">
+        <!-- Project 1 -->
+        <article class="card" aria-labelledby="p1-title">
+          <h3 id="p1-title">Banking WAN Hardening & Segmentation</h3>
+          <p class="muted">Cisco/Juniper edge, FortiGate perimeter, Zero Trust network segmentation across HQ/branches.</p>
+          <ul class="list">
+            <li>Reduced lateral movement risk by <strong>~70%</strong> via policy hygiene & micro-segmentation.</li>
+            <li>Implemented centralized logging/alerts (FAZ + Syslog), enabling <strong>sub-5m</strong> MTTD on priority events.</li>
+            <li>Automated baseline config rollout using <strong>Ansible</strong> with pre-change validation.</li>
+          </ul>
+          <div class="stack"><span class="tag">BGP/OSPF</span><span class="tag">FortiGate</span><span class="tag">Ansible</span><span class="tag">Zero Trust</span></div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card" aria-labelledby="p2-title">
+          <h3 id="p2-title">Enterprise Datacenter Refresh (EX/MX960)</h3>
+          <p class="muted">Core & aggregation modernization with Juniper EX/MX960, L2/L3 optimization and observability uplift.</p>
+          <ul class="list">
+            <li>Improved backbone availability to <strong>99.99%</strong> with controlled change windows & rollback plans.</li>
+            <li>Introduced <strong>NetFlow/SNMP</strong> telemetry and automated health checks.</li>
+            <li>Cut incident resolution by <strong>~35%</strong> via runbooks and dashboards.</li>
+          </ul>
+          <div class="stack"><span class="tag">JunOS</span><span class="tag">EX/MX960</span><span class="tag">Observability</span><span class="tag">Runbooks</span></div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card" aria-labelledby="p3-title">
+          <h3 id="p3-title">OCI Landing Zone for Hybrid Workloads</h3>
+          <p class="muted">Designed a secure VCN layout, gateways, and IaC workflows for repeatable cloud deployments.</p>
+          <ul class="list">
+            <li>Provisioned environments via <strong>Terraform</strong> modules and GitHub Actions pipelines.</li>
+            <li>Implemented guardrails (NSGs, route domains, vaults) and cost controls.</li>
+            <li>Enabled multi-AZ failover and standardized observability.</li>
+          </ul>
+          <div class="stack"><span class="tag">OCI</span><span class="tag">Terraform</span><span class="tag">CI/CD</span><span class="tag">NSG</span></div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="card" aria-labelledby="p4-title">
+          <h3 id="p4-title">Satellite QoS Validation & QA Framework</h3>
+          <p class="muted">QA integration for satcom solutions with traffic profiling and performance baselining.</p>
+          <ul class="list">
+            <li>Built test plans, synthetic traffic profiles, and automated reports.</li>
+            <li>Codified acceptance criteria and regression suites.</li>
+            <li>Delivered executive readouts with actionable recommendations.</li>
+          </ul>
+          <div class="stack"><span class="tag">QoS</span><span class="tag">Python</span><span class="tag">Test Design</span><span class="tag">Reporting</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT / LINKS -->
+    <section id="contact" aria-labelledby="contact-title" style="padding:24px 0">
+      <div class="h">
+        <h2 id="contact-title">Contact & Links</h2>
+        <span class="muted">Let’s build secure, automated networks</span>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <p>Open to collaborations across <strong>Networking · DevOps · DevSecOps</strong>. For opportunities or knowledge sharing, use the links below.</p>
+          <div class="sep"></div>
+          <div class="action-row">
+            <a class="btn" href="mailto:sandu.cerlat.sandu@gmail.com" aria-label="Email Alexandru">Email</a>
+            <a class="btn" href="https://github.com/AlexCerlat" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/alexandru-cerlat-274188215/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://www.upwork.com/freelancers/~your-upwork-id" target="_blank" rel="noopener">Upwork</a>
+            <a class="btn" href="cv/Alexandru_Cerlat_CV_EN.pdf" target="_blank" rel="noopener">Download CV (EN)</a>
+          </div>
+          <!-- Replace Upwork link with your real profile URL, and ensure the CV PDF exists at /cv/Alexandru_Cerlat_CV_EN.pdf -->
+        </div>
+
+        <div class="card">
+          <h3>Tech Focus</h3>
+          <ul class="list">
+            <li><strong>Target stack:</strong> IaC (Terraform), CI/CD (GitHub Actions), K8s, Observability</li>
+            <li><strong>Values:</strong> Security-by-default, automation-first, clear runbooks</li>
+            <li><strong>Languages:</strong> RO, RU, EN</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© <span id="year"></span> Alexandru Cerlat • Built with HTML/CSS/JS • Hosted on GitHub Pages</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
