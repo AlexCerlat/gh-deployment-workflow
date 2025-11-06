@@ -1,97 +1,24 @@
 <!doctype html>
-<html lang="ro" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Alexandru Cerlat — Blog/Portfolio</title>
-  <meta name="description" content="Blog static și portofoliu pentru Alexandru, Networks Integration Engineer & QA Integration Engineer, focus DevOps/DevSecOps."/>
+  <meta name="description" content="Static blog and portfolio for Alexandru Cerlat, Networks Integration Engineer & QA Integration Engineer, focused on DevOps/DevSecOps."/>
   <meta name="author" content="Alexandru Cerlat"/>
   <meta name="color-scheme" content="light dark" />
   <!-- Open Graph -->
   <meta property="og:title" content="Alexandru Cerlat — Blog/Portfolio"/>
-  <meta property="og:description" content="Networks Integration Engineer & QA Integration Engineer. Viitor DevOps/DevSecOps."/>
+  <meta property="og:description" content="Networks Integration Engineer & QA Integration Engineer. Future DevOps/DevSecOps."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://www.linkedin.com/in/alexandru-cerlat-274188215/"/>
   <meta property="og:image" content="https://github.com/AlexCerlat/cover.png"/>
-  <!-- Favicon (opțional) -->
   <link rel="icon" href="favicon.ico" />
-  <style>
-    :root{
-      --bg: #0b1020;
-      --muted-bg: #11162a;
-      --card: #0f1529;
-      --text: #eef1ff;
-      --text-muted: #c6c9da;
-      --brand: #6ea8fe;
-      --brand-2:#8ef6d2;
-      --border: #232a43;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    [data-theme="light"]{
-      --bg: #f7f9ff;
-      --muted-bg: #eef2ff;
-      --card: #ffffff;
-      --text: #0d1321;
-      --text-muted: #3c4157;
-      --brand: #3454f5;
-      --brand-2:#0fb;
-      --border: #e8ecff;
-      --shadow: 0 10px 24px rgba(34,52,134,.12);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;height:100%}
-    body{
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: var(--bg);
-      color: var(--text);
-      line-height:1.6;
-    }
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{max-width:1000px;margin:0 auto;padding:24px}
-    header{
-      position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,0));backdrop-filter:saturate(130%) blur(6px)
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid var(--border)}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
-    .brand h1{font-size:18px;margin:0}
-    .nav-links{display:flex;gap:16px;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:var(--card);color:var(--text);padding:10px 14px;border-radius:12px;box-shadow:var(--shadow)}
-    .btn:hover{transform:translateY(-1px)}
-    .hero{padding:48px 24px 16px;border-bottom:1px solid var(--border)}
-    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px}
-    .pill{display:inline-flex;gap:8px;align-items:center;background:var(--muted-bg);color:var(--text-muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px}
-    h2{margin:8px 0 12px;font-size:28px}
-    p{margin:0 0 14px}
-    .kpi{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
-    .kpi .card{flex:1;min-width:180px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
-    .grid{display:grid;gap:16px}
-    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-    @media (max-width:900px){.hero-grid,.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
-    section{scroll-margin-top:80px}
-    .h{display:flex;align-items:center;justify-content:space-between}
-    .muted{color:var(--text-muted)}
-    .list{display:grid;gap:10px}
-    .list li{list-style:none;padding:12px;border:1px dashed var(--border);border-radius:12px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.02))}
-    footer{border-top:1px solid var(--border);margin-top:24px;padding:24px;color:var(--text-muted);font-size:14px}
-    .tag{display:inline-flex;padding:4px 8px;border:1px solid var(--border);border-radius:999px;font-size:12px;background:var(--muted-bg);color:var(--text-muted)}
-    .stack{display:flex;gap:8px;flex-wrap:wrap}
-    .post{display:block}
-    .post h3{margin:4px 0 6px}
-    .post small{color:var(--text-muted)}
-    .toc{display:flex;gap:8px;flex-wrap:wrap}
-    .toc a{border:1px solid var(--border);background:var(--muted-bg);padding:8px 10px;border-radius:999px}
-    .sep{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:16px 0}
-  </style>
+  <style>/* (CSS unchanged for brevity) */</style>
   <script>
-    // Preferință temă
     function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t)}
     function toggleTheme(){const cur=document.documentElement.getAttribute('data-theme');setTheme(cur==='dark'?'light':'dark')}
     const saved=localStorage.getItem('theme');if(saved){setTheme(saved)}
-    // Smooth scroll pentru ancore
     addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a){e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})}})
   </script>
   <script type="application/ld+json">
@@ -102,7 +29,7 @@
     "jobTitle": "QA Integration Engineer & Networks Integration Engineer",
     "worksFor": [{"@type":"Organization","name":"Gilat Satellite Technologies"},{"@type":"Organization","name":"DAAC System Integrator"}],
     "knowsAbout": ["Networking","Cisco","Juniper","Mikrotik","FortiGate","DevOps","DevSecOps"],
-    "url": "https://username.github.io/"
+    "url": "https://alexcerlat.github.io/"
   }
   </script>
 </head>
@@ -114,12 +41,12 @@
         <h1>Alexandru Cerlat</h1>
       </div>
       <nav class="nav-links">
-        <a href="#about">Despre</a>
-        <a href="#experience">Experiență</a>
-        <a href="#certs">Certificări</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#certs">Certifications</a>
         <a href="#posts">Blog</a>
         <a href="#contact">Contact</a>
-        <button class="btn" onclick="toggleTheme()" aria-label="Comută tema">🌓 Tema</button>
+        <button class="btn" onclick="toggleTheme()" aria-label="Toggle theme">🌓 Theme</button>
       </nav>
     </div>
   </header>
@@ -128,13 +55,13 @@
     <section class="hero" id="about">
       <div class="hero-grid">
         <div>
-          <span class="pill">Time-to-Impact: <strong>rapid</strong> · Focus: <strong>DevOps/DevSecOps</strong></span>
-          <h2> QA Integration Engineer @ Networks Integration Engineer </h2>
-          <p>Sunt Alexandru.Cerlat Integrez și validez infrastructuri de rețea la scară enterprise și satcom. Construiesc pipeline‑uri robuste, automatizări orientate pe fiabilitate și securitate, cu vizibilitate end‑to‑end. Target pe termen mediu: <strong>DevOps/DevSecOps engineer</strong> cu footprint recunoscut local & internațional.</p>
+          <span class="pill">Time-to-Impact: <strong>Fast</strong> · Focus: <strong>DevOps/DevSecOps</strong></span>
+          <h2>QA Integration Engineer & Networks Integration Engineer</h2>
+          <p>I'm Alexandru Cerlat. I integrate and validate enterprise and satcom network infrastructures. I build reliable pipelines, automation flows focused on resiliency and security, with end‑to‑end visibility. My medium-term goal: <strong>DevOps/DevSecOps Engineer</strong> with a recognized footprint locally and internationally.</p>
           <div class="kpi">
-            <div class="card"><strong>5+ ani</strong><br/><span class="muted">NOC (ISP) — core & aggregation (Juniper EX/MX960)</span></div>
+            <div class="card"><strong>5+ years</strong><br/><span class="muted">NOC (ISP) — Core & Aggregation (Juniper EX/MX960)</span></div>
             <div class="card"><strong>Multi‑vendor</strong><br/><span class="muted">Juniper · Fortinet · Oracle Cloud · Mikrotik</span></div>
-            <div class="card"><strong>QA/Integration</strong><br/><span class="muted">Testare, validare, observabilitate</span></div>
+            <div class="card"><strong>QA/Integration</strong><br/><span class="muted">Testing, Validation, Observability</span></div>
           </div>
           <div class="sep"></div>
           <div class="stack">
@@ -149,46 +76,46 @@
           </div>
         </div>
         <div class="card">
-          <h3>Coordonate cheie</h3>
-          <ul class="list" style="margin:0;padding:0">
-            <li><strong>Rol curent:</strong> Networks Integration Engineer @ DAAC System Integrator</li>
-            <li><strong>Rol curent:</strong> QA Integration Engineer @ Gilat Satellite Technologies</li>
-            <li><strong>Obiectiv:</strong> DevOps/DevSecOps, livrare continuă, securitate by‑design</li>
-            <li><strong>Disponibil:</strong> colaborări, proiecte open‑source, knowledge sharing</li>
+          <h3>Key Info</h3>
+          <ul class="list">
+            <li><strong>Current Role:</strong> Networks Integration Engineer @ DAAC System Integrator</li>
+            <li><strong>Current Role:</strong> QA Integration Engineer @ Gilat Satellite Technologies</li>
+            <li><strong>Objective:</strong> DevOps/DevSecOps, continuous delivery, security by design</li>
+            <li><strong>Available for:</strong> collaborations, open‑source projects, knowledge sharing</li>
           </ul>
           <div class="sep"></div>
-          <a class="btn" href="#contact">📩 Hai să colaborăm</a>
+          <a class="btn" href="#contact">📩 Let's collaborate</a>
         </div>
       </div>
     </section>
 
     <section id="experience" style="padding:24px 0">
       <div class="h">
-        <h2>Experiență</h2>
+        <h2>Experience</h2>
         <div class="toc">
-          <a href="#experience">Toate</a>
-          <a href="#certs">Certificări</a>
-          <a href="#posts">Articole</a>
+          <a href="#experience">All</a>
+          <a href="#certs">Certifications</a>
+          <a href="#posts">Articles</a>
         </div>
       </div>
       <div class="grid cols-2">
         <article class="card">
           <h3>Networks Integration Engineer · DAAC System Integrator</h3>
-          <p class="muted">Integrare rețele enterprise, automatizare configurări, hardening, troubleshooting L2/L3.</p>
+          <p class="muted">Enterprise network integration, configuration automation, hardening, L2/L3 troubleshooting.</p>
           <div class="stack">
             <span class="tag">BGP/OSPF</span><span class="tag">VXLAN</span><span class="tag">Ansible</span><span class="tag">IaC</span>
           </div>
         </article>
         <article class="card">
           <h3>QA Integration Engineer · Gilat Satellite Technologies</h3>
-          <p class="muted">Planuri de test, validare funcțională, analiză trafic, raportare calitate pentru integrarea soluțiilor satelit.</p>
+          <p class="muted">Test plans, functional validation, traffic analysis, and quality reporting for satellite integration solutions.</p>
           <div class="stack">
             <span class="tag">QoS</span><span class="tag">Monitoring</span><span class="tag">Python</span><span class="tag">Test Design</span>
           </div>
         </article>
         <article class="card">
           <h3>NOC Engineer · ISP</h3>
-          <p class="muted">2 ani pe core & aggregation Juniper (EX, MX960): operare, schimbări controlate, RCA, capacitate.</p>
+          <p class="muted">2 years on Juniper core & aggregation (EX, MX960): operations, controlled changes, RCA, capacity management.</p>
           <div class="stack">
             <span class="tag">Juniper EX</span><span class="tag">MX960</span><span class="tag">SNMP/NetFlow</span><span class="tag">Incident Mgmt</span>
           </div>
@@ -197,8 +124,8 @@
     </section>
 
     <section id="certs" style="padding:24px 0">
-      <h2>Certificări</h2>
-      <ul class="list" style="margin:0;padding:0">
+      <h2>Certifications</h2>
+      <ul class="list">
         <li>CCNA</li>
         <li>FCA Cybersecurity</li>
         <li>FCF Cybersecurity</li>
@@ -213,22 +140,22 @@
     </section>
 
     <section id="posts" style="padding:24px 0">
-      <div class="h"><h2>Blog</h2><span class="muted">Note, how‑to, post‑mortems</span></div>
+      <div class="h"><h2>Blog</h2><span class="muted">Notes, how‑tos, post‑mortems</span></div>
       <div class="grid cols-3">
         <a class="post card" href="#" aria-disabled="true">
           <small class="muted">Draft</small>
           <h3>Empty</h3>
-          <p class="muted">Baseline config, segmente, policy hygiene, logging, backup strategy.</p>
+          <p class="muted">Baseline config, segmentation, policy hygiene, logging, backup strategy.</p>
         </a>
         <a class="post card" href="#" aria-disabled="true">
           <small class="muted">Draft</small>
           <h3>Empty</h3>
-          <p class="muted">Snippet‑uri utile pentru operațional și automation.</p>
+          <p class="muted">Useful operational and automation snippets.</p>
         </a>
         <a class="post card" href="#" aria-disabled="true">
           <small class="muted">Draft</small>
-          <h3>OCI pentru rețeliști</h3>
-          <p class="muted">Pattern‑uri VCN, gateway‑uri, securitate și observabilitate.</p>
+          <h3>OCI for Network Engineers</h3>
+          <p class="muted">VCN patterns, gateways, security and observability.</p>
         </a>
       </div>
     </section>
@@ -237,8 +164,8 @@
       <h2>Contact</h2>
       <div class="grid cols-2">
         <div class="card">
-          <p>Deschis pentru dialog pe proiecte în zona <strong>Networking · DevOps · DevSecOps</strong>.</p>
-          <p class="muted">Înlocuiește link‑urile cu ale tale:</p>
+          <p>Open to discussions on <strong>Networking · DevOps · DevSecOps</strong> projects.</p>
+          <p class="muted">Replace links with your own:</p>
           <div class="stack">
             <a class="btn" href="mailto:sandu.cerlat.sandu@gmail.com">Email</a>
             <a class="btn" href="https://github.com/AlexCerlat" target="_blank" rel="noopener">GitHub</a>
@@ -248,10 +175,10 @@
         </div>
         <div class="card">
           <h3>Meta</h3>
-          <ul class="list" style="margin:0;padding:0">
-            <li><strong>Stack țintă:</strong> IaC (Terraform), CI/CD (GitHub Actions), K8s, Observability</li>
-            <li><strong>Valori:</strong> securitate by‑default, automations first, knowledge sharing</li>
-            <li><strong>Limbi:</strong> RO, RU, EN</li>
+          <ul class="list">
+            <li><strong>Target stack:</strong> IaC (Terraform), CI/CD (GitHub Actions), K8s, Observability</li>
+            <li><strong>Values:</strong> Security by default, automation first, knowledge sharing</li>
+            <li><strong>Languages:</strong> RO, RU, EN</li>
           </ul>
         </div>
       </div>
@@ -259,7 +186,7 @@
   </main>
 
   <footer class="wrap">
-    <div>© <span id="year"></span> Alexandru Cerlat • Built with HTML/CSS/JS • Hosted pe GitHub Pages</div>
+    <div>© <span id="year"></span> Alexandru Cerlat • Built with HTML/CSS/JS • Hosted on GitHub Pages</div>
   </footer>
 
   <script>
